@@ -6,7 +6,8 @@
 
 var observer = new MutationObserver(function() {
     pwnJs = document.createElement("script");
-    pwnJs.innerHTML  = "var adblock_detect = function() {return false;}";
+    pwnJs.innerHTML  = "var adblock_detect = function() {return false;};";
+    pwnJs.innerHTML += "var adblock_detect_ajax = function() {};";
 
     document.body.appendChild(pwnJs);
     observer.disconnect();
