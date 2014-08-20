@@ -5,12 +5,14 @@
  * the COPYING file for more details. */
 
 var observer = new MutationObserver(function() {
-    pwnJs = document.createElement("script");
-    pwnJs.innerHTML  = "var adblock_detect = function() {return false;};";
-    pwnJs.innerHTML += "var adblock_detect_ajax = function() {};";
+	if(document.body) {
+		pwnJs = document.createElement("script");
+		pwnJs.innerHTML  = "var adblock_detect = function() {return false;};";
+		pwnJs.innerHTML += "var adblock_detect_ajax = function() {};";
 
-    document.body.appendChild(pwnJs);
-    observer.disconnect();
+		document.body.appendChild(pwnJs);
+		observer.disconnect();
+	}
 });
 var config = { subtree: true, attributes: true }
 observer.observe(document, config);
