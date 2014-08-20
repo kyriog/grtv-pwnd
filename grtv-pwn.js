@@ -9,6 +9,7 @@ var observer = new MutationObserver(function() {
 		pwnJs = document.createElement("script");
 		pwnJs.innerHTML  = "var adblock_detect = function() {return false;};";
 		pwnJs.innerHTML += "var adblock_detect_ajax = function() {};";
+		pwnJs.innerHTML += "var ChatClient = eval('('+ChatClient.toString().replace((/eval\\(.+\\)/i),\"return\")+')');";
 
 		document.body.appendChild(pwnJs);
 		observer.disconnect();
